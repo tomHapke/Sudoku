@@ -35,21 +35,12 @@ class game(tk.Tk):
 
 class StartPage(tk.Frame):
 
-    def selectDifficulty(frame):
-        button1 = tk.Button(frame, text ="Easy")
-
-        button2 = tk.Button(frame, text ="Middle")
-
-        button3 = tk.Button(frame, text ="Hard")
-
-        button4 = tk.Button(frame, text ="Emotional Damage")
-
-        #putting the difficulty button in its place
-
-        button1.grid(row = 1, column = 2, padx = 10, pady = 10)
-        button2.grid(row = 1, column = 3, padx = 10, pady = 10)
-        button3.grid(row = 1, column = 4, padx = 10, pady = 10)
-        button4.grid(row = 1, column = 5, padx = 10, pady = 10)
+    def selectDifficultyVisible(self):
+        for i,mode in enumerate(self.modes):
+            self.difficultyButtons[mode]=tk.Button(self, text =mode)
+            #putting the difficulty button in its place
+            self.difficultyButtons[mode].grid(row = 1, column = 2+i, padx = 10, pady = 10)
+            #hide them at first
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
@@ -62,7 +53,7 @@ class StartPage(tk.Frame):
         label.grid(row = 0, column = 4, padx = 10, pady = 10)
 
         button1 = tk.Button(self, text ="New game",
-        command = lambda : selectDifficulty(self))
+        command = self.selectDifficultyVisible)
 
         # putting the button in its place by
         # using grid
@@ -75,6 +66,14 @@ class StartPage(tk.Frame):
         # putting the button in its place by
         # using grid
         button2.grid(row = 2, column = 1, padx = 20, pady = 20)
+
+
+        #difficulty buttons
+        self.difficultyButtons={}
+
+        self.modes=["Easy", "Middle", "Hard", "Emotional Damage"]
+
+
 
 
 
