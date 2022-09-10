@@ -1,6 +1,6 @@
 import tkinter as tk
 import time
-import pandas
+
 
 LARGEFONT =("Verdana", 35)
 
@@ -72,7 +72,7 @@ class StartPage(tk.Frame):
         #difficulty buttons
         self.difficultyButtons={}
 
-        self.modes=["Easy", "Middle", "Hard", "Emotional Damage"]
+        self.modes=["Easy", "Medium", "Hard", "Emotional Damage"]
 
 # second window frame page1
 class GamePage(tk.Frame):
